@@ -3,6 +3,7 @@ package com.seclore.todolist.controller;
 import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,6 +34,7 @@ public class UserController {
 		modelAndView.setViewName("login");
 
 		modelAndView.addObject("userDetails",userDetails);
+		modelAndView.addObject("userDetails",userDetails);
 
 		return modelAndView;
 
@@ -42,7 +44,9 @@ public class UserController {
 	public ModelAndView showSignupPage() {
 		ModelAndView modelAndView = new ModelAndView();
 		UserDetails userDetails = new UserDetails();
+		UserDetails userDetails = new UserDetails();
 		modelAndView.setViewName("signup");
+		modelAndView.addObject("userDetails",userDetails);
 		modelAndView.addObject("userDetails",userDetails);
 		
 		return modelAndView;
