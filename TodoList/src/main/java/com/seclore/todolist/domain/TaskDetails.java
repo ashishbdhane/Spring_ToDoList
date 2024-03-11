@@ -20,11 +20,11 @@ public class TaskDetails {
 		this.status = status;
 	}
 
-	public int getTask_id() {
+	public int getTaskId() {
 		return taskId;
 	}
 
-	public void setTask_id(int taskId) {
+	public void setTaskId(int taskId) {
 		this.taskId = taskId;
 	}
 
