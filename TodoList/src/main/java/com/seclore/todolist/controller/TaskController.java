@@ -57,7 +57,7 @@ public class TaskController {
 		modelAndView.addObject("allStatus",allStatus);
 		
 		modelAndView.addObject("taskDetails", taskDetails);
-		modelAndView.setViewName("addtask");
+		modelAndView.setViewName("updatetask");
 			
 		return modelAndView;
 	}

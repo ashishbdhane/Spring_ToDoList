@@ -52,15 +52,12 @@
 			</tr>
 			<tr>
 				<td>Description : </td>
-				<td><form:input path="description" type="number" required="required"/></td>
+				<td><textarea rows="10" cols="25">${taskDetails.description } </textarea></td>
 			</tr>
 			<tr>
 				<td>Status : </td>
 				<td>
-					<form:select path="status" id="status" name="status">
-      					<c:forEach var="status" items="${allStatus}">
-        					<form:option value="${status}">${status}</form:option>
-      					</c:forEach>
+					<form:select path="status" items="${allStatus }" id="status" name="status">
     				</form:select>
 				</td>
 			</tr>
