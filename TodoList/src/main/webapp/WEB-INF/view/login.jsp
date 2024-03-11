@@ -9,7 +9,7 @@
 <title>Login</title>
 </head>
 <body>
-	<form:form action="userlogin" modelAttribute="user">
+	<form:form action="userlogin" modelAttribute="userDetails">
 		<table>
 			<tr>
 				<td>Email Id</td>
