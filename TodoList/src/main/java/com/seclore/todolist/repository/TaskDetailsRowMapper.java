@@ -26,7 +26,7 @@ public class TaskDetailsRowMapper implements RowMapper<TaskDetails> {
 			userDetails.setUserId(userId);
 			taskDetails=new TaskDetails(taskId, userDetails, title, description, status);
 			return taskDetails;
-			return taskDetails;
+			
 			
 		} catch (Exception e) {
 			e.printStackTrace();
