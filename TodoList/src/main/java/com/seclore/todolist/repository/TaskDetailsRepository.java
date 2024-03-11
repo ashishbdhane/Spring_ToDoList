@@ -28,7 +28,7 @@ public class TaskDetailsRepository implements TaskDetailsRepositoryInterface {
 	public List<TaskDetails> getAllTaskOfUser(UserDetails userDetails) {
 		// TODO Auto-generated method stub
 		try {
-			return jdbcTemplate.query(GET_ALL_TASK_OF_USER, new TaskDetailsRowMapper());
+			return jdbcTemplate.query(GET_ALL_TASK_OF_USER, new TaskDetailsRowMapper(),userDetails.getUserId());
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			return null;
@@ -51,6 +51,7 @@ public class TaskDetailsRepository implements TaskDetailsRepositoryInterface {
 	public boolean updateTask(TaskDetails taskDetails) {
 		// TODO Auto-generated method stub
 		Object[] args = {taskDetails.getTitle(),taskDetails.getDescription(),taskDetails.getStatus(),taskDetails.getTaskId()};
+		System.out.println(taskDetails);
 		int count= jdbcTemplate.update(UPDATE_TASK,args);
 		if(count>0) return true;
 		return false;
