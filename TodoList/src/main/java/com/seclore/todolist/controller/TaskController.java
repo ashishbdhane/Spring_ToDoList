@@ -47,10 +47,13 @@ public class TaskController {
 	}
 
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
-	public ModelAndView showEditTaskPage(@RequestParam("taskId") int taskId) {
+	public ModelAndView showEditTaskPage(@RequestParam int taskId) {
+		System.out.println("edit");
+
 		System.out.println("Started");
 		System.out.println(taskId);
 		ModelAndView modelAndView = new ModelAndView();
+		
 		modelAndView.setViewName("updatetask");
 		TaskDetails taskDetails = taskService.getTaskByTaskId(taskId);
 		System.out.println(taskDetails);

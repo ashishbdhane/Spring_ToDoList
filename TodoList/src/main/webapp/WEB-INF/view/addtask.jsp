@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Update Task</title>
+<title>Add TASK</title>
 <style type="text/css">
 	body{
 		display: flex;
@@ -41,29 +41,31 @@
 </head>
 <body>
 	<div class="title-div">
-		<a href="/tasks"> Back to All Tasks</a>
-		<h1>Update Task</h1>
+		<h1>Add Task</h1>
 	</div>
-	<form:form action="/tasks/edit" method="post" modelAttribute="taskDetails">
+	<form:form action="tasks/add" method="post" modelAttribute="taskDetails">
 		<table>
 			<tr>
-				<td>Title : </td>
-				<td><form:input path="title" type="text" required="required"/></td>
+				<td> Add Title:  </td>
+				<td><form:input path="title" type="text"  required="required"/></td>
 			</tr>
 			<tr>
-				<td>Description : </td>
-				<td><textarea rows="10" cols="25">${taskDetails.description } </textarea></td>
+				<td>Add Description: </td>
+				<td><form:input path="Description" type="text"  required="required"/></td>
 			</tr>
 			<tr>
 				<td>Status : </td>
 				<td>
-					<form:select path="status" items="${allStatus }" id="status" name="status">
-    				</form:select>
+					<select id="status" name="status">
+      					<c:forEach var="status" items="${allStatus}">
+        					<option value="${status}" >${status}</option>
+      					</c:forEach>
+    				</select>
 				</td>
 			</tr>
 		</table>
 		<div class="submit">
-			<input type="submit" value="Update Task">
+			<input type="submit" value="Add Task">
 		</div>
 	</form:form>
 </body>

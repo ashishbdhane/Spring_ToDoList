@@ -15,11 +15,11 @@ public class TaskDetailsRepository implements TaskDetailsRepositoryInterface {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
-	private static final String GET_ALL_TASK_OF_USER="SELECT *from task_details where user_id=?";
+	private static final String GET_ALL_TASK_OF_USER="SELECT * from task_details where user_id=?";
 	private static final String ADD_TASK="INSERT INTO task_details (user_id, title, description, status) VALUES (?, ?, ?, ?)";
 	private static final String UPDATE_TASK="update task_details set title=?,description=?,status=? where task_id=? ";
 	private static final String DELETE_TASK="delete task_details where task_id=?";
-	private static final String GET_TASK_BY_TASK_ID="SELECT * from task_details where task_id=?";
+	private static final String GET_TASK_BY_TASK_ID="SELECT *from task_details where task_id=?";
 	
 	
 	
@@ -28,7 +28,7 @@ public class TaskDetailsRepository implements TaskDetailsRepositoryInterface {
 	public List<TaskDetails> getAllTaskOfUser(UserDetails userDetails) {
 		// TODO Auto-generated method stub
 		try {
-			return jdbcTemplate.query(GET_ALL_TASK_OF_USER, new TaskDetailsRowMapper());
+			return jdbcTemplate.query(GET_ALL_TASK_OF_USER, new TaskDetailsRowMapper(),userDetails.getUserId());
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			return null;
@@ -51,6 +51,7 @@ public class TaskDetailsRepository implements TaskDetailsRepositoryInterface {
 	public boolean updateTask(TaskDetails taskDetails) {
 		// TODO Auto-generated method stub
 		Object[] args = {taskDetails.getTitle(),taskDetails.getDescription(),taskDetails.getStatus(),taskDetails.getTaskId()};
+		System.out.println(taskDetails);
 		int count= jdbcTemplate.update(UPDATE_TASK,args);
 		if(count>0) return true;
 		return false;
@@ -69,6 +70,7 @@ public class TaskDetailsRepository implements TaskDetailsRepositoryInterface {
 	@Override
 	public TaskDetails getTaskByTaskId(int taskId) {
 		// TODO Auto-generated method stub
+		System.out.println(taskId);
 		try {
 			return jdbcTemplate.queryForObject(GET_TASK_BY_TASK_ID, new TaskDetailsRowMapper(),taskId);
 		} catch (Exception e) {

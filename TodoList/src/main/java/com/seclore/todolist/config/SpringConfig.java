@@ -7,6 +7,8 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import com.seclore.todolist.interceptor.todoListInterceptor;
+
 
 @Configuration
 public class SpringConfig implements WebMvcConfigurer {
@@ -18,8 +20,9 @@ public class SpringConfig implements WebMvcConfigurer {
 		return viewResolver;
 	}
 
-	@Override
-	public void addInterceptors(InterceptorRegistry registry) {
-	}
+//	@Override
+//	public void addInterceptors(InterceptorRegistry registry) {
+//	registry.addInterceptor(new todoListInterceptor());
+//	}
 }
 
