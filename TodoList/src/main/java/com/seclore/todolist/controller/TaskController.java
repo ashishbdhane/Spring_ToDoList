@@ -1,17 +1,21 @@
 package com.seclore.todolist.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.seclore.todolist.domain.TaskDetails;
 import com.seclore.todolist.domain.UserDetails;
 import com.seclore.todolist.service.TaskDetailsServiceInterface;
 
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -43,27 +47,45 @@ public class TaskController {
 	}
 	
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
-	public ModelAndView showEditTaskPage() {
+	public ModelAndView showEditTaskPage(@RequestParam int taskId) {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("addtask");
-		TaskDetails taskDetails = taskService.getTaskById();
+		TaskDetails taskDetails = taskService.getTaskByTaskId(taskId);
+		String[] allStatus = {"PENDING","IN PROGRESS","COMPLETED"};
+		modelAndView.addObject("allStatus",allStatus);
 		modelAndView.addObject("taskDetails", taskDetails);
 			
 		return modelAndView;
 	}
 	
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public void addTask() {
-		
+	public void addTask(@ModelAttribute TaskDetails taskDetails,HttpServletResponse response) throws IOException {
+		boolean success = taskService.addTask(taskDetails);
+		if(success) {
+			response.sendRedirect("/");
+			return;
+		}
+		response.sendRedirect("/error");
 	}
 	
 	@RequestMapping(value = "/edit", method = RequestMethod.POST)
-	public void updateTask() {
-		
+	public void updateTask(@ModelAttribute TaskDetails taskDetails,HttpServletResponse response) throws IOException {
+		boolean success = taskService.updateTask(taskDetails);
+		if(success) {
+			response.sendRedirect("/");
+			return;
+		}
+		response.sendRedirect("/error");
 	}
 	
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
-	public void deleteTask() {
-		
+	public void deleteTask(@RequestParam int taskId,HttpServletResponse response) throws IOException {
+		TaskDetails taskDetails = new TaskDetails(taskId,new UserDetails(),"","","");
+		boolean success = taskService.deleteTask(taskDetails);
+		if(success) {
+			response.sendRedirect("/");
+			return;
+		}
+		response.sendRedirect("/error");
 	}
 }
