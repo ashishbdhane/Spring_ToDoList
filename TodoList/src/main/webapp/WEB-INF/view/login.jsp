@@ -24,6 +24,8 @@
 				<input type="submit" value="login"></td>
 			</tr>
 		</table>
+		<br>
+		<a href="signup">click here</a> to signup
 	</form:form>
 
 </body>

@@ -44,11 +44,8 @@ public class UserController {
 	public ModelAndView showSignupPage() {
 		ModelAndView modelAndView = new ModelAndView();
 		UserDetails userDetails = new UserDetails();
-		UserDetails userDetails = new UserDetails();
 		modelAndView.setViewName("signup");
-		modelAndView.addObject("userDetails",userDetails);
-		modelAndView.addObject("userDetails",userDetails);
-		
+		modelAndView.addObject("userDetails",userDetails);		
 		return modelAndView;
 	}
 
@@ -73,7 +70,7 @@ public class UserController {
 			nextPage = "login";
 		} else {
 			session.setAttribute("loggedInUser", loggedUser);
-			nextPage = "redirect:/tasks";
+			nextPage = "redirect:/tasks/";
 		}
 		return nextPage;
 	}
