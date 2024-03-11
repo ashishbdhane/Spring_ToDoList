@@ -21,11 +21,12 @@ public class UserDetailsRepository implements UserDetailsRepositoryInterface {
 
 	@Override
 	public boolean addNewUser(UserDetails userDetails) {
-		Object[] args = {userDetails.getUserId(),userDetails.getMobileNo(),userDetails.getEmail(),userDetails.getPassword()};
+		Object[] args = {userDetails.getName(),userDetails.getMobileNo(),userDetails.getEmail(),userDetails.getPassword()};
 		int rowCount;
 		try {
 			rowCount = jdbcTemplate.update(INSERT_NEW_USER,args);
 		} catch(Exception e){
+			System.out.println(e.getMessage());
 			return false;
 		}
 		if(rowCount>0) return true;

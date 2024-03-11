@@ -2,6 +2,7 @@ package com.seclore.todolist.controller;
 
 import java.io.IOException;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +18,8 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 public class UserController {
 
-	private UserDetailsServiceInterface userDetailsService = new UserDetailsService();
+	@Autowired
+	private UserDetailsServiceInterface userDetailsService;
 
 	@RequestMapping("/")
 	public String showDefaultPage() {
@@ -30,7 +32,7 @@ public class UserController {
 		UserDetails userDetails = new UserDetails();
 		modelAndView.setViewName("login");
 
-		modelAndView.addObject("user",user);
+		modelAndView.addObject("userDetails",userDetails);
 
 		return modelAndView;
 
@@ -39,16 +41,16 @@ public class UserController {
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)
 	public ModelAndView showSignupPage() {
 		ModelAndView modelAndView = new ModelAndView();
-		UserDetails user = new UserDetails();
+		UserDetails userDetails = new UserDetails();
 		modelAndView.setViewName("signup");
-		modelAndView.addObject("user",user);
+		modelAndView.addObject("userDetails",userDetails);
 		
 		return modelAndView;
 	}
 
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
 	public String registerUser(@ModelAttribute UserDetails userDetails, HttpSession session) {
-
+		System.out.println(userDetails);
 		if (userDetailsService.signup(userDetails))
 			session.setAttribute("message", "Successfully added user");
 		else
