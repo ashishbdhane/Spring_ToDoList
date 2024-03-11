@@ -41,18 +41,19 @@
 </head>
 <body>
 	<div class="title-div">
-		<a href="/tasks"> Back to All Tasks</a>
+		<a href="/tasks/"> Back to All Tasks</a>
 		<h1>Update Task</h1>
 	</div>
 	<form:form action="/tasks/edit" method="post" modelAttribute="taskDetails">
 		<table>
+			<form:input path="taskId" type="hidden" value="${taskDetails.taskId}" />
 			<tr>
 				<td>Title : </td>
 				<td><form:input path="title" type="text" required="required"/></td>
 			</tr>
 			<tr>
 				<td>Description : </td>
-				<td><textarea rows="10" cols="25">${taskDetails.description } </textarea></td>
+				<td><form:textarea path="description" id="description"></form:textarea></td>
 			</tr>
 			<tr>
 				<td>Status : </td>

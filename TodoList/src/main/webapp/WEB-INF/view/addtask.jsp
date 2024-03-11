@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Add TASK</title>
+<title>Add Task</title>
 <style type="text/css">
 	body{
 		display: flex;
@@ -41,16 +41,17 @@
 </head>
 <body>
 	<div class="title-div">
+		<a href="/tasks/"> Back to All Tasks</a>
 		<h1>Add Task</h1>
 	</div>
 	<form:form action="/tasks/add" method="post" modelAttribute="taskDetails">
 		<table>
 			<tr>
-				<td> Add Title:  </td>
+				<td>Title:  </td>
 				<td><form:input path="title" type="text"  required="required"/></td>
 			</tr>
 			<tr>
-				<td>Add Description: </td>
+				<td>Description: </td>
 				<td><form:input path="Description" type="text"  required="required"/></td>
 			</tr>
 			<tr>

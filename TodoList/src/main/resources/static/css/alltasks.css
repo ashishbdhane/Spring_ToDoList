@@ -1,0 +1,160 @@
+@charset "ISO-8859-1";
+
+*{
+	margin: 0;
+	padding: 0;
+}
+
+body{
+	background-color: #f7ebfd;
+}
+
+nav{
+	padding: 1rem;
+	background-color: #3c096c;
+	color: white;
+}
+
+
+li{
+	list-style: none
+}
+
+table{
+	width: 100%;
+}
+
+thead{
+	background-color: #9d4edd;
+	color: white;
+}
+
+th{
+	padding: 10px;
+}
+
+td{	
+	color: white;
+	text-align: center;
+	padding: 15px;
+}
+
+
+.logout{
+	color: white;
+	text-decoration: none;
+}
+
+
+.logout:hover{
+	text-decoration: underline;
+}
+
+.addForm{
+	display: flex;
+	justify-content: center;
+	padding: 1.5rem;	
+}
+
+.addButton {
+  appearance: none;
+  background-color: #9d4edd;
+  border: 1px solid rgba(27, 31, 35, .15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  padding: 6px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.addButton:focus:not(:focus-visible):not(.focus-visible) {
+  box-shadow: none;
+  outline: none;
+}
+
+.addButton:hover {
+  background-color: #c77dff;
+}
+
+.addButton:focus {
+  box-shadow: #c77dff 0 0 0 3px;
+  outline: none;
+}
+
+.addButton:disabled {
+  background-color: #c77dff;
+  border-color: rgba(27, 31, 35, .1);
+  color: rgba(255, 255, 255, .8);
+  cursor: default;
+}
+
+.addButton:active {
+  background-color: #9d4edd;
+  box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
+}
+
+.deleteButton:hover{
+	color: #bc4749;
+}
+
+.editButton:hover{
+	color: #1f487e;
+}
+
+.noTodoAvailable{
+	text-align: center;
+	padding: 1rem;
+}
+
+.actions{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap:15px;
+}
+
+.INPROGRESS{
+	background-color: #b185db;
+}
+
+.COMPLETED{
+	background-color: #815ac0;
+}
+
+.PENDING{
+	background-color: #dac3e8;
+}
+
+.navList{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.userDetails{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 20px;
+}
+
+.userLogo {
+	width: 25px;
+	height: 25px;
+	background-color: white;
+	border-radius: 50%;
+}
