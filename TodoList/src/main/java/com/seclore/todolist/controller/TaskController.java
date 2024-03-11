@@ -21,10 +21,10 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 @RequestMapping("/tasks")
 public class TaskController {
-	
+
 	@Autowired
 	private TaskDetailsServiceInterface taskService;
-	
+
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView showTodoListPage(HttpSession session) {
 		ModelAndView modelAndView = new ModelAndView();
@@ -32,20 +32,20 @@ public class TaskController {
 		UserDetails userDetails = (UserDetails) session.getAttribute("loggedInUser");
 		List<TaskDetails> allTasks = taskService.getAllTaskOfUser(userDetails);
 		modelAndView.addObject("allTasks", allTasks);
-			
+
 		return modelAndView;
 	}
-	
+
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public ModelAndView showAddTaskPage() {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("addtask");
 		TaskDetails taskDetails = new TaskDetails();
 		modelAndView.addObject("taskDetails", taskDetails);
-			
+
 		return modelAndView;
 	}
-	
+
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
 	public ModelAndView showEditTaskPage(@RequestParam int taskId) {
 		System.out.println("edit");
@@ -57,40 +57,38 @@ public class TaskController {
 		modelAndView.setViewName("updatetask");
 		TaskDetails taskDetails = taskService.getTaskByTaskId(taskId);
 		System.out.println(taskDetails);
-		String[] allStatus = {"PENDING","IN PROGRESS","COMPLETED"};
-		modelAndView.addObject("allStatus",allStatus);
-		
+		String[] allStatus = { "PENDING", "IN PROGRESS", "COMPLETED" };
+		modelAndView.addObject("allStatus", allStatus);
 		modelAndView.addObject("taskDetails", taskDetails);
-		
-			
+
 		return modelAndView;
 	}
-	
+
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public void addTask(@ModelAttribute TaskDetails taskDetails,HttpServletResponse response) throws IOException {
+	public void addTask(@ModelAttribute TaskDetails taskDetails, HttpServletResponse response) throws IOException {
 		boolean success = taskService.addTask(taskDetails);
-		if(success) {
+		if (success) {
 			response.sendRedirect("/");
 			return;
 		}
 		response.sendRedirect("/error");
 	}
-	
+
 	@RequestMapping(value = "/edit", method = RequestMethod.POST)
-	public void updateTask(@ModelAttribute TaskDetails taskDetails,HttpServletResponse response) throws IOException {
+	public void updateTask(@ModelAttribute TaskDetails taskDetails, HttpServletResponse response) throws IOException {
 		boolean success = taskService.updateTask(taskDetails);
-		if(success) {
+		if (success) {
 			response.sendRedirect("/");
 			return;
 		}
 		response.sendRedirect("/error");
 	}
-	
+
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
-	public void deleteTask(@RequestParam("taskId") int taskId,HttpServletResponse response) throws IOException {
-		TaskDetails taskDetails = new TaskDetails(taskId,new UserDetails(),"","","");
+	public void deleteTask(@RequestParam("taskId") int taskId, HttpServletResponse response) throws IOException {
+		TaskDetails taskDetails = new TaskDetails(taskId, new UserDetails(), "", "", "");
 		boolean success = taskService.deleteTask(taskDetails);
-		if(success) {
+		if (success) {
 			response.sendRedirect("/");
 			return;
 		}
