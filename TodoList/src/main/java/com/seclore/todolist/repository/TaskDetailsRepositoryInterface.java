@@ -10,4 +10,5 @@ public interface TaskDetailsRepositoryInterface {
 	public boolean addTask(TaskDetails taskDetails);
 	public boolean updateTask(TaskDetails taskDetails);
 	public boolean deleteTask(TaskDetails taskDetails);
+	public TaskDetails getTaskByTaskId(TaskDetails taskDetails);
 }
