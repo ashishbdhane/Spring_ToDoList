@@ -44,29 +44,29 @@
 		<a href="/tasks"> Back to All Tasks</a>
 		<h1>Update Task</h1>
 	</div>
-	<form:form action="/tasks/add" method="post" modelAttribute="taskDetails">
+	<form:form action="/tasks/edit" method="post" modelAttribute="taskDetails">
 		<table>
 			<tr>
 				<td>Title : </td>
-				<td><form:input path="roomName" type="text" value="${taskDetails.title }" required="required"/></td>
+				<td><form:input path="title" type="text" required="required"/></td>
 			</tr>
 			<tr>
 				<td>Description : </td>
-				<td><form:input path="capacity" type="number" value="${taskDetails.description }" required="required"/></td>
+				<td><form:input path="description" type="number" required="required"/></td>
 			</tr>
 			<tr>
 				<td>Status : </td>
 				<td>
-					<select id="status" name="status">
+					<form:select path="status" id="status" name="status">
       					<c:forEach var="status" items="${allStatus}">
-        					<option value="${status}" ${status.equals(taskDetails.status) ? 'selected="selected"' : ''}>${status}</option>
+        					<form:option value="${status}">${status}</form:option>
       					</c:forEach>
-    				</select>
+    				</form:select>
 				</td>
 			</tr>
 		</table>
 		<div class="submit">
-			<input type="submit" value="Add Task">
+			<input type="submit" value="Update Task">
 		</div>
 	</form:form>
 </body>
