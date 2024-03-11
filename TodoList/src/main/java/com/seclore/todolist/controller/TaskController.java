@@ -47,15 +47,17 @@ public class TaskController {
 	}
 	
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
-	public ModelAndView showEditTaskPage(@RequestParam("taskId") int taskId) {
-		System.out.println("Started");
-		System.out.println(taskId);
+	public ModelAndView showEditTaskPage(@RequestParam int taskId) {
+		System.out.println("edit");
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("updatetask");
+		
 		TaskDetails taskDetails = taskService.getTaskByTaskId(taskId);
+		System.out.println(taskDetails);
 		String[] allStatus = {"PENDING","IN PROGRESS","COMPLETED"};
 		modelAndView.addObject("allStatus",allStatus);
+		
 		modelAndView.addObject("taskDetails", taskDetails);
+		modelAndView.setViewName("addtask");
 			
 		return modelAndView;
 	}
@@ -81,7 +83,7 @@ public class TaskController {
 	}
 	
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
-	public void deleteTask(@RequestParam("taskId") int taskId,HttpServletResponse response) throws IOException {
+	public void deleteTask(@RequestParam int taskId,HttpServletResponse response) throws IOException {
 		TaskDetails taskDetails = new TaskDetails(taskId,new UserDetails(),"","","");
 		boolean success = taskService.deleteTask(taskDetails);
 		if(success) {
