@@ -43,7 +43,7 @@
 	<div class="title-div">
 		<h1>Add Task</h1>
 	</div>
-	<form:form action="tasks/add" method="post" modelAttribute="taskDetails">
+	<form:form action="/tasks/add" method="post" modelAttribute="taskDetails">
 		<table>
 			<tr>
 				<td> Add Title:  </td>
@@ -54,14 +54,13 @@
 				<td><form:input path="Description" type="text"  required="required"/></td>
 			</tr>
 			<tr>
+				<tr>
 				<td>Status : </td>
 				<td>
-					<select id="status" name="status">
-      					<c:forEach var="status" items="${allStatus}">
-        					<option value="${status}" >${status}</option>
-      					</c:forEach>
-    				</select>
+					<form:select path="status" items="${allStatus }" id="status" name="status">
+    				</form:select>
 				</td>
+			</tr>
 			</tr>
 		</table>
 		<div class="submit">

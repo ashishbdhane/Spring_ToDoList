@@ -1,30 +1,44 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Login</title>
+<title>To-DO</title>
 </head>
 <body>
-	<form:form action="userlogin" modelAttribute="user">
+	<h2>Sign Up</h2>
+
+	<f:form action="signup" modelAttribute="user">
 		<table>
 			<tr>
-				<td>Email Id</td>
-				<td><form:input path="email" type="email" /></td>
+				<td>Login Id:</td>
+				<td><f:input path="userId" /></td>
+			</tr>
+			<tr>
+				<td>Name:</td>
+				<td><f:input path="name" /></td>
+			</tr>
+			<tr>
+				<td>Mobile No.:</td>
+				<td><f:input path="mobileNo" /></td>
+			</tr>
+			<tr>
+				<td>Email:</td>
+				<td><f:input path="email" /></td>
 			</tr>
 			<tr>
 				<td>Password</td>
-				<td><form:input path="password" type="password" /></td>
+				<td><f:input path="password" /></td>
 			</tr>
 			<tr>
-				<td colspan="2" align="center">
-				<input type="submit" value="login"></td>
+				<td>Confirm Password</td>
+				<td><f:input path="password" /></td>
 			</tr>
 		</table>
-	</form:form>
-
+		<input type="submit" value="login" />
+	</f:form>
+	<a href="/login">Already User?</a>
 </body>
 </html>
