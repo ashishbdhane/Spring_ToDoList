@@ -10,35 +10,33 @@
 <body>
 	<h2>Sign Up</h2>
 
-	<f:form action="signup" modelAttribute="user">
+	<f:form action="signup" modelAttribute="userDetails">
 		<table>
 			<tr>
-				<td>Login Id:</td>
-				<td><f:input path="userId" /></td>
-			</tr>
-			<tr>
-				<td>Name:</td>
+				<td>Name: </td>
 				<td><f:input path="name" /></td>
 			</tr>
 			<tr>
-				<td>Mobile No.:</td>
+				<td>Mobile No.: </td>
 				<td><f:input path="mobileNo" /></td>
 			</tr>
 			<tr>
-				<td>Email:</td>
+				<td>Email: </td>
 				<td><f:input path="email" /></td>
 			</tr>
 			<tr>
-				<td>Password</td>
-				<td><f:input path="password" /></td>
+				<td>Password: </td>
+				<td><f:input path="password" type="password" /></td>
 			</tr>
 			<tr>
-				<td>Confirm Password</td>
-				<td><f:input path="password" /></td>
+				<td>Confirm Password: </td>
+				<td><input type="password" /></td>
 			</tr>
 		</table>
-		<input type="submit" value="login" />
+		
+		<input type="submit" value="Sign Up" />
 	</f:form>
+	<br>
 	<a href="/login">Already User?</a>
 </body>
 </html>
