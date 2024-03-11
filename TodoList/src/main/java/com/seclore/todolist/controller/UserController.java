@@ -31,7 +31,7 @@ public class UserController {
 		UserDetails userDetails = new UserDetails();
 		modelAndView.setViewName("login");
 
-		modelAndView.addObject("user",user);
+		modelAndView.addObject("userDetails",userDetails);
 
 		return modelAndView;
 
@@ -40,9 +40,9 @@ public class UserController {
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)
 	public ModelAndView showSignupPage() {
 		ModelAndView modelAndView = new ModelAndView();
-		UserDetails user = new UserDetails();
+		UserDetails userDetails = new UserDetails();
 		modelAndView.setViewName("signup");
-		modelAndView.addObject("user",user);
+		modelAndView.addObject("userDetails",userDetails);
 		
 		return modelAndView;
 	}
