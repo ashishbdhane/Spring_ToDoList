@@ -27,9 +27,11 @@ public class UserController {
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView showLoginPage() {
 		ModelAndView modelAndView = new ModelAndView();
-		UserDetails user = new UserDetails();
+		UserDetails userDetails = new UserDetails();
 		modelAndView.setViewName("login");
+
 		modelAndView.addObject("user",user);
+
 		return modelAndView;
 
 	}
@@ -45,9 +47,9 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
-	public String registerUser(@ModelAttribute UserDetails user, HttpSession session) {
+	public String registerUser(@ModelAttribute UserDetails userDetails, HttpSession session) {
 
-		if (userDetailsService.signup(user))
+		if (userDetailsService.signup(userDetails))
 			session.setAttribute("message", "Successfully added user");
 		else
 			session.setAttribute("message", "failed to add new User");
@@ -56,8 +58,8 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/userlogin", method = RequestMethod.POST)
-	public String userLogin(@ModelAttribute UserDetails user, HttpSession session) {
-		UserDetails loggedUser = userDetailsService.login(user.getEmail(), user.getPassword());
+	public String userLogin(@ModelAttribute UserDetails userDetails, HttpSession session) {
+		UserDetails loggedUser = userDetailsService.login(userDetails.getEmail(), userDetails.getPassword());
 		String message, nextPage;
 		if (loggedUser == null) {
 			message = " INVALID USER_ID OR PASSWORD ";
