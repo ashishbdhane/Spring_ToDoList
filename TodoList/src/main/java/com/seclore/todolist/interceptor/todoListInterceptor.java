@@ -16,10 +16,10 @@ public class todoListInterceptor implements HandlerInterceptor {
 		String uri = request.getRequestURI();
 		HttpSession session = request.getSession();
 		UserDetails user = (UserDetails) session.getAttribute("loggedInUser");
-		if (uri.equals("/") || uri.equals("/login") || uri.equals("/userlogin")) {
+		if(uri.equals("/") || uri.equals("/login") || uri.equals("/userlogin")) {
 			return true;
 		}
-		else if (user == null) {
+		else if (user == null|| session.getAttribute("loggedInUser")==null) {
 			response.sendRedirect("/login");
 			return false;
 		}
