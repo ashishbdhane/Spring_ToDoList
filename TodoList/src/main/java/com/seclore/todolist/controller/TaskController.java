@@ -48,12 +48,16 @@ public class TaskController {
 	
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
 	public ModelAndView showEditTaskPage(@RequestParam int taskId) {
+		System.out.println("edit");
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("addtask");
+		
 		TaskDetails taskDetails = taskService.getTaskByTaskId(taskId);
+		System.out.println(taskDetails);
 		String[] allStatus = {"PENDING","IN PROGRESS","COMPLETED"};
 		modelAndView.addObject("allStatus",allStatus);
+		
 		modelAndView.addObject("taskDetails", taskDetails);
+		modelAndView.setViewName("addtask");
 			
 		return modelAndView;
 	}
