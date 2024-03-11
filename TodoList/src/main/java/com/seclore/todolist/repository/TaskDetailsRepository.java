@@ -19,7 +19,7 @@ public class TaskDetailsRepository implements TaskDetailsRepositoryInterface {
 	private static final String ADD_TASK="INSERT INTO task_details (user_id, title, description, status) VALUES (?, ?, ?, ?)";
 	private static final String UPDATE_TASK="update task_details set title=?,description=?,status=? where task_id=? ";
 	private static final String DELETE_TASK="delete task_details where task_id=?";
-	private static final String GET_TASK_BY_TASK_ID="SELECT *from task_details where user_id=?";
+	private static final String GET_TASK_BY_TASK_ID="SELECT * from task_details where task_id=?";
 	
 	
 	

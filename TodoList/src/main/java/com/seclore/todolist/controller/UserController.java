@@ -29,7 +29,7 @@ public class UserController {
 		ModelAndView modelAndView = new ModelAndView();
 		UserDetails user = new UserDetails();
 		modelAndView.setViewName("login");
-		modelAndView.addObject(user);
+		modelAndView.addObject("user",user);
 		return modelAndView;
 
 	}
@@ -39,7 +39,7 @@ public class UserController {
 		ModelAndView modelAndView = new ModelAndView();
 		UserDetails user = new UserDetails();
 		modelAndView.setViewName("signup");
-		modelAndView.addObject(user);
+		modelAndView.addObject("user",user);
 		
 		return modelAndView;
 	}
