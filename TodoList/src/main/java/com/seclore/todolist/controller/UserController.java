@@ -11,7 +11,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.seclore.todolist.domain.UserDetails;
 
 import com.seclore.todolist.service.*;
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
@@ -26,55 +25,58 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String showLoginPage() {
-		return "login";
+	public ModelAndView showLoginPage() {
+		ModelAndView modelAndView = new ModelAndView();
+		UserDetails user = new UserDetails();
+		modelAndView.setViewName("login");
+		modelAndView.addObject(user);
+		return modelAndView;
+
 	}
 
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)
-	public String showSignupPage() {
-		return "signup";
+	public ModelAndView showSignupPage() {
+		ModelAndView modelAndView = new ModelAndView();
+		UserDetails user = new UserDetails();
+		modelAndView.setViewName("signup");
+		modelAndView.addObject(user);
+		
+		return modelAndView;
 	}
 
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
-	public String registerUser(@ModelAttribute UserDetails user, HttpSession session, HttpServletRequest request) {
-String password = user.getPassword();
-		String rePassword = request.getParameter("rePassword");
-		if (!password.equals(rePassword)) {
-			session.setAttribute("message", "Passwords dont match");
-			return "redirect:/signup";
-		}
+	public String registerUser(@ModelAttribute UserDetails user, HttpSession session) {
+
 		if (userDetailsService.signup(user))
 			session.setAttribute("message", "Successfully added user");
-
-		session.setAttribute("message", "failed to add new User");
-
+		else
+			session.setAttribute("message", "failed to add new User");
 		return "redirect:/login";
 
 	}
-	
-	@RequestMapping(value = "/userlogin" , method = RequestMethod.POST)
+
+	@RequestMapping(value = "/userlogin", method = RequestMethod.POST)
 	public String userLogin(@ModelAttribute UserDetails user, HttpSession session) {
-		UserDetails loggedUser =  userDetailsService.login(user.getEmail(), user.getPassword());
+		UserDetails loggedUser = userDetailsService.login(user.getEmail(), user.getPassword());
 		String message, nextPage;
-		if(loggedUser == null) {
+		if (loggedUser == null) {
 			message = " INVALID USER_ID OR PASSWORD ";
 			session.setAttribute("message", message);
 			nextPage = "login";
-		}
-		else {
+		} else {
 			session.setAttribute("loggedInUser", loggedUser);
 			nextPage = "redirect:/tasks";
 		}
 		return nextPage;
 	}
+
 	@RequestMapping("logout")
 	public void logOut(HttpSession session, HttpServletResponse response) {
 		try {
 			session.invalidate();
 			response.sendRedirect("login");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 		}
 	}
 
