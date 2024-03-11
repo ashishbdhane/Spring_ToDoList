@@ -9,7 +9,7 @@ CREATE TABLE user_details(
 	name VARCHAR(20) NOT NULL,
 	mobile_no VARCHAR(10) NOT NULL,
 	email VARCHAR(20) NOT NULL,
-	password VARCHAR(20) NOT NULL,
+	password TEXT NOT NULL,
 	CONSTRAINT user_id_pk PRIMARY KEY(user_id),
 	CONSTRAINT email_unique UNIQUE(email),
 )
