@@ -13,19 +13,18 @@ public class todoListInterceptor implements HandlerInterceptor {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		String uri = request.getRequestURI();
 		HttpSession session = request.getSession();
-		UserDetails user = (UserDetails) session.getAttribute("loggedInUser");
-		if(uri.equals("/") || uri.equals("/login") || uri.equals("/userlogin")) {
+		
+		String uri = request.getRequestURI();
+
+		if(uri.equals("/") || uri.equals("login") || uri.equals("/userlogin") || uri.contains("login")) {
 			return true;
 		}
-		else if (user == null|| session.getAttribute("loggedInUser")==null) {
-			response.sendRedirect("/login");
-			return false;
-		}
-		else {
+		if (session.getAttribute("loggedInUser") != null) {
 			return true;
 		}
+		response.sendRedirect("/login");
+		return false;
 
 	}
 }

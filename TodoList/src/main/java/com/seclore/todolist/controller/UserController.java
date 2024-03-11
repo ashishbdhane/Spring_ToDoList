@@ -2,6 +2,7 @@ package com.seclore.todolist.controller;
 
 import java.io.IOException;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,8 +17,8 @@ import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class UserController {
-
-	private UserDetailsServiceInterface userDetailsService = new UserDetailsService();
+@Autowired
+	private UserDetailsServiceInterface userDetailsService ;
 
 	@RequestMapping("/")
 	public String showDefaultPage() {
