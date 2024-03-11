@@ -24,13 +24,9 @@ public class TaskController {
 
 	@Autowired
 	private TaskDetailsServiceInterface taskService;
-<<<<<<< Updated upstream
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-=======
 	
 	@RequestMapping(value = "", method = RequestMethod.GET)
->>>>>>> Stashed changes
 	public ModelAndView showTodoListPage(HttpSession session) {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("/alltasks");
@@ -58,64 +54,35 @@ public class TaskController {
 
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
 	public ModelAndView showEditTaskPage(@RequestParam int taskId) {
-<<<<<<< Updated upstream
 		System.out.println("edit");
-
-		System.out.println("Started");
-		System.out.println(taskId);
-=======
->>>>>>> Stashed changes
 		ModelAndView modelAndView = new ModelAndView();
 		
-		modelAndView.setViewName("updatetask");
 		TaskDetails taskDetails = taskService.getTaskByTaskId(taskId);
-<<<<<<< Updated upstream
-		System.out.println(taskDetails);
 		String[] allStatus = { "PENDING", "IN PROGRESS", "COMPLETED" };
 		modelAndView.addObject("allStatus", allStatus);
-		modelAndView.addObject("taskDetails", taskDetails);
-
-=======
-		String[] allStatus = {"PENDING","INPROGRESS","COMPLETED"};
-		modelAndView.addObject("allStatus",allStatus);
 		
 		modelAndView.addObject("taskDetails", taskDetails);
 		modelAndView.setViewName("/updatetask");
 			
->>>>>>> Stashed changes
 		return modelAndView;
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-<<<<<<< Updated upstream
-	public void addTask(@ModelAttribute TaskDetails taskDetails, HttpServletResponse response) throws IOException {
-		boolean success = taskService.addTask(taskDetails);
-		if (success) {
-			response.sendRedirect("/");
-=======
 	public void addTask(@ModelAttribute TaskDetails taskDetails,HttpServletResponse response) throws IOException {
 		taskDetails.setUserDetails( new UserDetails(1, null, null, null, null));
 		boolean success = taskService.addTask(taskDetails);
 		if(success) {
 			response.sendRedirect("/tasks");
->>>>>>> Stashed changes
 			return;
 		}
 		response.sendRedirect("/error");
 	}
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST)
-<<<<<<< Updated upstream
-	public void updateTask(@ModelAttribute TaskDetails taskDetails, HttpServletResponse response) throws IOException {
-		boolean success = taskService.updateTask(taskDetails);
-		if (success) {
-			response.sendRedirect("/");
-=======
 	public void updateTask(@ModelAttribute TaskDetails taskDetails,HttpServletResponse response) throws IOException {		
 		boolean success = taskService.updateTask(taskDetails);
 		if(success) {
 			response.sendRedirect("/tasks");
->>>>>>> Stashed changes
 			return;
 		}
 		response.sendRedirect("/error");
@@ -125,13 +92,8 @@ public class TaskController {
 	public void deleteTask(@RequestParam("taskId") int taskId, HttpServletResponse response) throws IOException {
 		TaskDetails taskDetails = new TaskDetails(taskId, new UserDetails(), "", "", "");
 		boolean success = taskService.deleteTask(taskDetails);
-<<<<<<< Updated upstream
-		if (success) {
-			response.sendRedirect("/");
-=======
 		if(success) {
 			response.sendRedirect("/tasks");
->>>>>>> Stashed changes
 			return;
 		}
 		response.sendRedirect("/error");
