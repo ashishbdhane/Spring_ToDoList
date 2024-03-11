@@ -35,10 +35,10 @@ public class TaskDetailsService implements TaskDetailsServiceInterface {
 	}
 
 	@Override
-	public TaskDetails getTaskByTaskId(TaskDetails taskDetails) {
+	public TaskDetails getTaskByTaskId(int taskId) {
 		// TODO Auto-generated method stub
 	
-		return taskDetailsRepository.getTaskByTaskId(taskDetails);
+		return taskDetailsRepository.getTaskByTaskId(taskId);
 	}
 	
 	

@@ -67,10 +67,10 @@ public class TaskDetailsRepository implements TaskDetailsRepositoryInterface {
 	}
 
 	@Override
-	public TaskDetails getTaskByTaskId(TaskDetails taskDetails) {
+	public TaskDetails getTaskByTaskId(int taskId) {
 		// TODO Auto-generated method stub
 		try {
-			return jdbcTemplate.queryForObject(GET_TASK_BY_TASK_ID, new TaskDetailsRowMapper(),taskDetails.getTaskId());
+			return jdbcTemplate.queryForObject(GET_TASK_BY_TASK_ID, new TaskDetailsRowMapper(),taskId);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			return null;
