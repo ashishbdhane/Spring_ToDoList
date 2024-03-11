@@ -17,7 +17,6 @@ public class UserDetailsService implements UserDetailsServiceInterface {
 	@Override
 	public UserDetails login(String email, String password) {
 		UserDetails userDetails =  userDetailsRepository.getUserByEmail(email);
-		
 		String bCryptedPassword = bCryptPasswordEncoder.encode(password);
 		boolean passwordIsValid = bCryptPasswordEncoder.matches(userDetails.getPassword(), bCryptedPassword);
 		

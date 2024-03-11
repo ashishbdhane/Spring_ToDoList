@@ -44,7 +44,6 @@ public class UserController {
 	public ModelAndView showSignupPage() {
 		ModelAndView modelAndView = new ModelAndView();
 		UserDetails userDetails = new UserDetails();
-		UserDetails userDetails = new UserDetails();
 		modelAndView.setViewName("signup");
 		modelAndView.addObject("userDetails",userDetails);
 		modelAndView.addObject("userDetails",userDetails);
@@ -54,7 +53,6 @@ public class UserController {
 
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
 	public String registerUser(@ModelAttribute UserDetails userDetails, HttpSession session) {
-		System.out.println(userDetails);
 		if (userDetailsService.signup(userDetails))
 			session.setAttribute("message", "Successfully added user");
 		else
@@ -67,6 +65,7 @@ public class UserController {
 	public String userLogin(@ModelAttribute UserDetails userDetails, HttpSession session) {
 		UserDetails loggedUser = userDetailsService.login(userDetails.getEmail(), userDetails.getPassword());
 		String message, nextPage;
+		
 		if (loggedUser == null) {
 			message = " INVALID USER_ID OR PASSWORD ";
 			session.setAttribute("message", message);
