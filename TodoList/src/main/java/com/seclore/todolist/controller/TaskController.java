@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,11 +22,10 @@ import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/tasks")
-public class TaskController {
+public class TaskController{
 
 	@Autowired
 	private TaskDetailsServiceInterface taskService;
-
 	
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public ModelAndView showTodoListPage(HttpSession session) {
@@ -100,4 +101,5 @@ public class TaskController {
 		}
 		response.sendRedirect("/error");
 	}
+
 }

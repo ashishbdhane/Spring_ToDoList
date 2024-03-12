@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -54,7 +55,7 @@ public class UserController {
 		if (userDetailsService.signup(userDetails))
 			session.setAttribute("message", "Successfully added user");
 		else
-			session.setAttribute("message", "failed to add new User");
+			session.setAttribute("message", "Failed to add new User");
 		return "redirect:/login";
 
 	}
@@ -65,7 +66,7 @@ public class UserController {
 		String message, nextPage;
 		
 		if (loggedUser == null) {
-			message = " INVALID USER_ID OR PASSWORD ";
+			message = "Invalid E-mail or Password";
 			session.setAttribute("message", message);
 			nextPage = "login";
 		} else {
