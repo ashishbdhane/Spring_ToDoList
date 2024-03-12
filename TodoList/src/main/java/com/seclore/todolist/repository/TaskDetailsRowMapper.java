@@ -8,29 +8,31 @@ import org.springframework.jdbc.core.RowMapper;
 
 import com.seclore.todolist.domain.TaskDetails;
 import com.seclore.todolist.domain.UserDetails;
-
+//RowMapper of TaskDetails
 public class TaskDetailsRowMapper implements RowMapper<TaskDetails> {
-
+	
 	@Override
 	public TaskDetails mapRow(ResultSet rs, int rowNum) throws SQLException {
 		// TODO Auto-generated method stub
+		TaskDetails taskDetails = null;
+		UserDetails userDetails=new UserDetails();  //creating userDetails object
 		try {
-			TaskDetails taskDetails;
-			UserDetails userDetails=new UserDetails();
-			int taskId= rs.getInt("task_id");
-			int userId=rs.getInt("user_id");
-			String title=rs.getString("title");
-			String description=rs.getString("description");
-			String status=rs.getString("status");
 			
-			userDetails.setUserId(userId);
-			taskDetails=new TaskDetails(taskId, userDetails, title, description, status);
-			return taskDetails;	
+			int taskId= rs.getInt("task_id"); 	//Retrieving task_id from ResultSet
+			int userId=rs.getInt("user_id"); 	//Retrieving user_id from ResultSet
+			String title=rs.getString("title");	//Retrieving title from ResultSet
+			String description=rs.getString("description"); //Retrieving description from ResultSet
+			String status=rs.getString("status"); //Retrieving status from ResultSet
+			
+			userDetails.setUserId(userId); //setting userId in userDetails
+			taskDetails=new TaskDetails(taskId, userDetails, title, description, status); //creating TaskDetails object
+			 
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-			return null;
+			
 		}
+		return taskDetails;	//Returning the taskDetails object Returning null if any case of exception  
 	}
 
 }
