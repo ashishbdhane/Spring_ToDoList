@@ -69,6 +69,7 @@ public class TaskController {
 	public void addTask(@ModelAttribute TaskDetails taskDetails,HttpServletResponse response,HttpSession session) throws IOException {
 		UserDetails userDetails = (UserDetails) session.getAttribute("loggedInUser");
 		taskDetails.setUserDetails(userDetails);
+		session.setAttribute("message", "Task Added");
 		boolean success = taskService.addTask(taskDetails);
 		if(success) {
 			response.sendRedirect("/tasks");
@@ -78,8 +79,9 @@ public class TaskController {
 	}
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST)
-	public void updateTask(@ModelAttribute TaskDetails taskDetails,HttpServletResponse response) throws IOException {		
+	public void updateTask(@ModelAttribute TaskDetails taskDetails,HttpServletResponse response,HttpSession session) throws IOException {		
 		boolean success = taskService.updateTask(taskDetails);
+		session.setAttribute("message", "Task Edited");
 		if(success) {
 			response.sendRedirect("/tasks");
 			return;
@@ -88,8 +90,9 @@ public class TaskController {
 	}
 
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
-	public void deleteTask(@RequestParam("taskId") int taskId, HttpServletResponse response) throws IOException {
+	public void deleteTask(@RequestParam("taskId") int taskId, HttpServletResponse response,HttpSession session) throws IOException {
 		TaskDetails taskDetails = new TaskDetails(taskId, new UserDetails(), "", "", "");
+		session.setAttribute("message", "Task Deleted");
 		boolean success = taskService.deleteTask(taskDetails);
 		if(success) {
 			response.sendRedirect("/tasks");

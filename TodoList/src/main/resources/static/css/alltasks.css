@@ -11,6 +11,10 @@ body{
 
 main{
 	padding: 0px 25px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 
 nav{
@@ -163,4 +167,30 @@ td{
 	height: 25px;
 	background-color: white;
 	border-radius: 50%;
+}
+
+.message{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin-top : 2rem;
+	width: 10rem;
+	padding: 0.75rem;
+	background-color: white;
+	border-radius: 15px; 
+}
+
+.added{
+	color: #06b178;
+	border-top: 1px solid #06b178;	
+}
+
+.edited{
+	color: #354fab;
+	border-top: 1px solid #354fab;
+}
+
+.deleted{
+	color: #f35b04;
+	border-top: 1px solid #f35b04;
 }
