@@ -38,13 +38,13 @@ nav{
 	color: white;
 }
 
-.signupForm{
+.loginForm{
 	background-color: white;
 	border-radius: 10px;
 	overflow: hidden;
 }
 
-.signupForm h2{
+.loginForm h2{
 	background-color: #3c096c;
 	color: white;
 	padding: 0.75rem;

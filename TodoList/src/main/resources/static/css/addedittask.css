@@ -1,20 +1,20 @@
 @charset "ISO-8859-1";
 
 *{
-	margin : 0;
-	padding:  0;
+	margin: 0;
+	padding: 0;
 }
 
 body{
-	align-items:center;
 	background-color: #f7ebfd;
 }
 
-
-td{
-	text-align: left;
-	padding: 10px;
+nav{
+	padding: 1rem;
+	background-color: #3c096c;
+	color: white;
 }
+
 
 main{
 	display: flex;
@@ -31,25 +31,38 @@ h2{
 table{
 	padding: 1rem;
 }
-nav{
-	text-align: center;
-	padding: 1rem;
-	background-color: #3c096c;
-	color: white;
+
+li{
+	list-style: none
 }
 
-.signupForm{
+td{
+	text-align: left;
+	padding: 10px;
+}
+
+.logout{
+	color: white;
+	text-decoration: none;
+}
+
+
+.updateForm{
 	background-color: white;
 	border-radius: 10px;
 	overflow: hidden;
 }
 
-.signupForm h2{
+.updateForm h2{
 	background-color: #3c096c;
 	color: white;
 	padding: 0.75rem;
 }
 
+
+.logout:hover{
+	text-decoration: underline;
+}
 
 .addButton {
   appearance: none;
@@ -102,9 +115,32 @@ nav{
   box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
 }
 
+.navList{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.userDetails{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 20px;
+}
+
+.userLogo {
+	width: 25px;
+	height: 25px;
+	background-color: white;
+	border-radius: 50%;
+}
 
 .submitContainer{
 	display: flex;
 	justify-content: center;
 	padding: 1rem;
+}
+
+.backLink{
+	padding-top: 50px;
 }

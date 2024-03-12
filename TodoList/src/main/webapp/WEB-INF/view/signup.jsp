@@ -40,7 +40,7 @@
 				</tr>
 			</table>
 			<div class="submitContainer">
-				<input type="submit" value="Sign Up" class = "submit-btn"/>
+				<input type="submit" value="Sign Up" class = "addButton"/>
 			</div>
 		</f:form>
 	</div>
