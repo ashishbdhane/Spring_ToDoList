@@ -18,7 +18,7 @@ public class UserDetailsRepository implements UserDetailsRepositoryInterface {
 	private static final String GET_USER = "SELECT * from user_details where email = ?";
 	
 
-
+	//Adds new user to database
 	@Override
 	public boolean addNewUser(UserDetails userDetails) {
 		Object[] args = {userDetails.getName(),userDetails.getMobileNo(),userDetails.getEmail(),userDetails.getPassword()};
@@ -33,6 +33,7 @@ public class UserDetailsRepository implements UserDetailsRepositoryInterface {
 		return false;
 	}
 
+	//Get User object by Email Id from database
 	@Override
 	public UserDetails getUserByEmail(String email) {
 		UserDetails userDetails;

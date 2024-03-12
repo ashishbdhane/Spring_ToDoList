@@ -17,7 +17,8 @@ public class UserDetailsService implements UserDetailsServiceInterface {
 	@Autowired
 	private UserDetailsRepositoryInterface userDetailsRepository;
 	
-
+	//Get user object by email and compare with hashed password. 
+	//Returns user object is valid else returns null
 	@Override
 	public UserDetails login(String email, String password) {
 		UserDetails userDetails =  userDetailsRepository.getUserByEmail(email);
@@ -31,12 +32,15 @@ public class UserDetailsService implements UserDetailsServiceInterface {
 		else return null;
 	}
 
+	//Call insert query and insert user object with hashed password
 	@Override
 	public boolean signup(UserDetails userDetails) {
 		userDetails.setPassword(getMd5(userDetails.getPassword()));
 		return userDetailsRepository.addNewUser(userDetails);
 	}
 	
+	
+	//Handles hashing of password
 	private String getMd5(String password) {
         try {
 			MessageDigest md = MessageDigest.getInstance("MD5");

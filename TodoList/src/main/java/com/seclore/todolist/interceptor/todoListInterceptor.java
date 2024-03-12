@@ -13,6 +13,8 @@ import jakarta.servlet.http.HttpSession;
 
 public class todoListInterceptor implements HandlerInterceptor {
 
+	//Interceptor 
+	//Intercept every request. Logged out user gets redirected to login page
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {

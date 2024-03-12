@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.RowMapper;
 
 import com.seclore.todolist.domain.UserDetails;
 
+//Row mapper of UserDetails
 public class UserDetailsRowMapper implements RowMapper<UserDetails> {
 
 	@Override
