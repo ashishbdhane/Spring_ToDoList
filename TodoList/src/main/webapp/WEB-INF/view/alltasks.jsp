@@ -7,12 +7,28 @@
 <head>
 <meta charset="ISO-8859-1">
 <link rel="stylesheet" href="/css/alltasks.css">
+<script defer type="text/javascript" src="/js/notification.js"></script>
 <title>TodoList</title>
 </head>
 <body>
-	<%!UserDetails userDetails;%>
+	<%!
+		UserDetails userDetails;
+		String message;
+		String messageClass;
+	%>
 	<%
 		userDetails = (UserDetails) session.getAttribute("loggedInUser");
+		message = (String) session.getAttribute("message");
+		if(message != null){
+			if(message.equals("Task Added")){
+				messageClass = "message added";
+			}else if(message.equals("Task Edited")){
+				messageClass = "message edited";
+			}else{
+				messageClass = "message deleted";
+			}	
+		}
+		
 	%>
 	<nav>
 		<ul class="navList">
@@ -27,6 +43,12 @@
 		</ul>
 	</nav>
 	<main>
+		<c:if test="${message != null}">
+			<div class="<%=messageClass %>" >
+				<p>${message }</p>
+			</div>
+			<% session.removeAttribute("message"); %>
+		</c:if>
 		<c:if test="${allTasks == null || allTasks.isEmpty() == true }">
 			<h2 class="noTodoAvailable">No Todo Available</h2>
 		</c:if>
