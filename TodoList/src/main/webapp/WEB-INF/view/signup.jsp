@@ -20,7 +20,7 @@
 			</tr>
 			<tr>
 				<td>Mobile No.: </td>
-				<td><f:input path="mobileNo" placeholder="Mobile" /></td>
+				<td><f:input path="mobileNo" placeholder="Mobile" id = "mobileNo"/></td>
 			</tr>
 			<tr>
 				<td>Email: </td>

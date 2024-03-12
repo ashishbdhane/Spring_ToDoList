@@ -3,12 +3,17 @@
  */
 
  function passwordsMatch(){
-	 var password1 = document.getElementsByName("password").value;
-     var password2 = document.getElementsByName("rePassword").value;
+	 var password1 = document.getElementsById("password").value;
+     var password2 = document.getElementsById("rePassword").value;
+     var mobile = document.getElementById("mobileNo").value;
      console.log(password1);
      console.log(password2);
      let re = /^(?=.*\d)(?=.*[a-zA-Z])[a-zA-Z0-9]{7,}$/;
 
+    if(mobile.length!=10){
+        alert("invalid mobile number");
+        return false;
+    }
     if(password1.length <8){
         alert("password too short");
         return false;
