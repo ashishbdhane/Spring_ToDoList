@@ -22,12 +22,14 @@ public class UserController {
 
 	@Autowired
 	private UserDetailsServiceInterface userDetailsService;
-
+	
+	//Base link redirected to login Page
 	@RequestMapping("/")
 	public String showDefaultPage() {
 		return "redirect:/login";
 	}
 
+	//Load login page with userDetails object as model
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView showLoginPage() {
 		ModelAndView modelAndView = new ModelAndView();
@@ -35,12 +37,12 @@ public class UserController {
 		modelAndView.setViewName("login");
 
 		modelAndView.addObject("userDetails",userDetails);
-		modelAndView.addObject("userDetails",userDetails);
 
 		return modelAndView;
 
 	}
-
+	
+	//Load signup page with userDetails object as model
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)
 	public ModelAndView showSignupPage() {
 		ModelAndView modelAndView = new ModelAndView();
@@ -50,6 +52,8 @@ public class UserController {
 		return modelAndView;
 	}
 
+	//Handles post method of signup page to register new user
+	//Success or Failed message gets added in session to display
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
 	public String registerUser(@ModelAttribute UserDetails userDetails, HttpSession session) {
 		if (userDetailsService.signup(userDetails))
@@ -60,6 +64,8 @@ public class UserController {
 
 	}
 
+	//Handles post method of login page to login user and saves loggedInUser object to session
+	//If Success opend taks list of users else failed message shown on same page
 	@RequestMapping(value = "/userlogin", method = RequestMethod.POST)
 	public String userLogin(@ModelAttribute UserDetails userDetails, HttpSession session) {
 		UserDetails loggedUser = userDetailsService.login(userDetails.getEmail(), userDetails.getPassword());
@@ -76,6 +82,7 @@ public class UserController {
 		return nextPage;
 	}
 
+	//Deletes loggedInUser object from session and redirects to login page
 	@RequestMapping("logout")
 	public void logOut(HttpSession session, HttpServletResponse response) {
 		try {
