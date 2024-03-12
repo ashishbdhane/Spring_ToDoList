@@ -23,7 +23,7 @@
 			<li>
 				<h1>Todo List</h1>
 			</li>
-			<li><a href="" class="logout">Log out</a></li>
+			<li><a href="/logout" class="logout">Log out</a></li>
 		</ul>
 	</nav>
 	<main>

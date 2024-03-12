@@ -66,7 +66,9 @@ public class TaskController {
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public void addTask(@ModelAttribute TaskDetails taskDetails,HttpServletResponse response) throws IOException {
+	public void addTask(@ModelAttribute TaskDetails taskDetails,HttpServletResponse response,HttpSession session) throws IOException {
+		UserDetails userDetails = (UserDetails) session.getAttribute("loggedInUser");
+		taskDetails.setUserDetails(userDetails);
 		boolean success = taskService.addTask(taskDetails);
 		if(success) {
 			response.sendRedirect("/tasks");
