@@ -20,9 +20,9 @@ public class SpringConfig implements WebMvcConfigurer {
 		return viewResolver;
 	}
 
-//	@Override
-//	public void addInterceptors(InterceptorRegistry registry) {
-//	registry.addInterceptor(new todoListInterceptor());
-//	}
+	@Override
+	public void addInterceptors(InterceptorRegistry registry) {
+	registry.addInterceptor(new todoListInterceptor());
+	}
 }
 
