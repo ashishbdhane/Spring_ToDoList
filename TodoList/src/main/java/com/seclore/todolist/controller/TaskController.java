@@ -69,6 +69,7 @@ public class TaskController {
 	public void addTask(@ModelAttribute TaskDetails taskDetails,HttpServletResponse response,HttpSession session) throws IOException {
 		UserDetails userDetails = (UserDetails) session.getAttribute("loggedInUser");
 		taskDetails.setUserDetails(userDetails);
+		session.setAttribute("message", "Task Added");
 		boolean success = taskService.addTask(taskDetails);
 		if(success) {
 			response.sendRedirect("/tasks");
