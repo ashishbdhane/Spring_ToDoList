@@ -54,7 +54,7 @@ public class UserController {
 		if (userDetailsService.signup(userDetails))
 			session.setAttribute("message", "Successfully added user");
 		else
-			session.setAttribute("message", "failed to add new User");
+			session.setAttribute("message", "Failed to add new User");
 		return "redirect:/login";
 
 	}
@@ -65,7 +65,7 @@ public class UserController {
 		String message, nextPage;
 		
 		if (loggedUser == null) {
-			message = " INVALID USER_ID OR PASSWORD ";
+			message = "Invalid E-mail or Password";
 			session.setAttribute("message", message);
 			nextPage = "login";
 		} else {

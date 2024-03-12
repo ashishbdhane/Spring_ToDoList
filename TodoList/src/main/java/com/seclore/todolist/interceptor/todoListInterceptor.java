@@ -25,6 +25,5 @@ public class todoListInterceptor implements HandlerInterceptor {
 		}
 		response.sendRedirect("/login");
 		return false;
-
 	}
 }
