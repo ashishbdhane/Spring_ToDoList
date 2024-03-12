@@ -12,10 +12,7 @@
 <body>
 	<%!UserDetails userDetails;%>
 	<%
-	/* userDetails = (UserDetails) session.getAttribute("loggedInUser"); */
-	userDetails = new UserDetails();
-	userDetails.setUserId(1);
-	userDetails.setName("Rohit");
+		userDetails = (UserDetails) session.getAttribute("loggedInUser");
 	%>
 	<nav>
 		<ul class="navList">
