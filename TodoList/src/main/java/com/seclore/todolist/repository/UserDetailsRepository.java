@@ -35,8 +35,15 @@ public class UserDetailsRepository implements UserDetailsRepositoryInterface {
 
 	@Override
 	public UserDetails getUserByEmail(String email) {
-		
-		UserDetails userDetails = jdbcTemplate.queryForObject(GET_USER, new UserDetailsRowMapper(),email);
+		UserDetails userDetails;
+		try {			
+			userDetails = jdbcTemplate.queryForObject(GET_USER, new UserDetailsRowMapper(),email);
+		}
+		catch(Exception e)
+		{
+			System.out.println("Email Not Found");
+			return null;
+		}
 		return userDetails;
 	}
 

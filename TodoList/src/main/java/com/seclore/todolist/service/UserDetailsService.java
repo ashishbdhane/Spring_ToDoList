@@ -21,7 +21,8 @@ public class UserDetailsService implements UserDetailsServiceInterface {
 	@Override
 	public UserDetails login(String email, String password) {
 		UserDetails userDetails =  userDetailsRepository.getUserByEmail(email);
-		
+		if(userDetails==null)
+			return null;
 		String hashedPassword = getMd5(password);
 		boolean passwordIsValid = (userDetails.getPassword().equals(hashedPassword));
 		
