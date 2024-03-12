@@ -26,6 +26,7 @@ li{
 
 table{
 	width: 100%;
+	table-layout: fixed;
 }
 
 thead{
@@ -41,6 +42,7 @@ td{
 	color: white;
 	text-align: center;
 	padding: 15px;
+	word-wrap: break-word;
 }
 
 
