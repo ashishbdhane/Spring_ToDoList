@@ -70,7 +70,7 @@ public class UserController {
 			nextPage = "login";
 		} else {
 			session.setAttribute("loggedInUser", loggedUser);
-			nextPage = "redirect:/tasks/";
+			nextPage = "redirect:/tasks";
 		}
 		return nextPage;
 	}
