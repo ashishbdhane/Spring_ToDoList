@@ -8,7 +8,7 @@ function passwordsMatch() {
     var mobile = document.getElementById("mobileNo").value;
     console.log(password1);
     console.log(password2);
-    let re = /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])[a-zA-Z0-9!#$%&?]{8,20}$/;
+    let re = /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])[a-zA-Z0-9!#@$%&?]{8,20}$/;
 
     if (mobile.length != 10) {
         alert("invalid mobile number");
