@@ -6,7 +6,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>To-DO</title>
-<script src="js/SignupValidations.js"></script>
+<script src="/js/SignupValidations.js"></script>
 <link rel="stylesheet" href="/css/signup.css">
 </head>
 <body>
