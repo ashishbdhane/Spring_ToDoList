@@ -30,9 +30,7 @@ public class TaskController {
 	public ModelAndView showTodoListPage(HttpSession session) {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("/alltasks");
-//		UserDetails userDetails = (UserDetails) session.getAttribute("loggedInUser");
-		UserDetails userDetails = new UserDetails();
-		userDetails.setUserId(1);
+		UserDetails userDetails = (UserDetails) session.getAttribute("loggedInUser");
 		List<TaskDetails> allTasks = taskService.getAllTaskOfUser(userDetails);
 		modelAndView.addObject("allTasks", allTasks);
 
@@ -58,7 +56,7 @@ public class TaskController {
 		ModelAndView modelAndView = new ModelAndView();
 		
 		TaskDetails taskDetails = taskService.getTaskByTaskId(taskId);
-		String[] allStatus = { "PENDING", "IN PROGRESS", "COMPLETED" };
+		String[] allStatus = { "PENDING", "INPROGRESS", "COMPLETED" };
 		modelAndView.addObject("allStatus", allStatus);
 		
 		modelAndView.addObject("taskDetails", taskDetails);
@@ -69,7 +67,6 @@ public class TaskController {
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public void addTask(@ModelAttribute TaskDetails taskDetails,HttpServletResponse response) throws IOException {
-		taskDetails.setUserDetails( new UserDetails(1, null, null, null, null));
 		boolean success = taskService.addTask(taskDetails);
 		if(success) {
 			response.sendRedirect("/tasks");
