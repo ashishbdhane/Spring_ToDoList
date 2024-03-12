@@ -6,7 +6,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>To-DO</title>
-<script src="/js/SignupValidations.js"></script>
+<script src="js/SignupValidations.js"></script>
 <link rel="stylesheet" href="/css/signup.css">
 </head>
 <body>
@@ -24,7 +24,7 @@
 				</tr>
 				<tr>
 					<td>Mobile No.: </td>
-					<td><f:input path="mobileNo" placeholder="Mobile" id = "mobileNo"/></td>
+					<td><f:input path="mobileNo" placeholder="Mobile" name = "mobileNo"/></td>
 				</tr>
 				<tr>
 					<td>Email: </td>
@@ -32,11 +32,11 @@
 				</tr>
 				<tr>
 					<td>Password: </td>
-					<td><f:input path="password" type="password" id="password" placeholder="Password" /></td>
+					<td><f:input path="password" type="password" name="password" id="password" placeholder="Password" /></td>
 				</tr>
 				<tr>
 					<td>Confirm Password: </td>
-					<td><input type="password" id= "rePassword" placeholder = "retype Password"/></td>
+					<td><input type="password" name = "rePassword" id = "rePassword" placeholder = "retype Password"/></td>
 				</tr>
 			</table>
 			<div class="submitContainer">

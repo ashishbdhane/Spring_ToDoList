@@ -17,7 +17,7 @@ public class todoListInterceptor implements HandlerInterceptor {
 		
 		String uri = request.getRequestURI();
 
-		if(uri.equals("/") || uri.equals("login") || uri.equals("/userlogin") || uri.contains("login") || uri.equals("/signup") || uri.contains("signup")) {
+		if(uri.equals("/") || uri.equals("login") || uri.equals("/userlogin") || uri.contains("login") || uri.contains("signup") || uri.contains("js")) {
 			return true;
 		}
 		if (session.getAttribute("loggedInUser") != null) {
