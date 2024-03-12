@@ -10,35 +10,42 @@
 <link rel="stylesheet" href="/css/signup.css">
 </head>
 <body>
-	<h2>Sign Up</h2>
-
-	<f:form action="signup" modelAttribute="userDetails" onsubmit="return passwordsMatch()">
-		<table>
-			<tr>
-				<td>Name: </td>
-				<td><f:input path="name" placeholder = "Name" /></td>
-			</tr>
-			<tr>
-				<td>Mobile No.: </td>
-				<td><f:input path="mobileNo" placeholder="Mobile" id = "mobileNo"/></td>
-			</tr>
-			<tr>
-				<td>Email: </td>
-				<td><f:input path="email"  type="email"  placeholder= "Email"/></td>
-			</tr>
-			<tr>
-				<td>Password: </td>
-				<td><f:input path="password" type="password" id="password" placeholder="Password" /></td>
-			</tr>
-			<tr>
-				<td>Confirm Password: </td>
-				<td><input type="password" id= "rePassword" placeholder = "retype Password"/></td>
-			</tr>
-		</table>
-		
-		<input type="submit" value="Sign Up" class = "submit-btn"/>
-	</f:form>
+<nav>
+<h1>TodoList</h1>
+</nav>
+<main>
+	<div class="signupForm">
+		<h2>Sign Up</h2>
+		<f:form action="signup" modelAttribute="userDetails" onsubmit="return passwordsMatch()">
+			<table>
+				<tr>
+					<td>Name: </td>
+					<td><f:input path="name" placeholder = "Name" /></td>
+				</tr>
+				<tr>
+					<td>Mobile No.: </td>
+					<td><f:input path="mobileNo" placeholder="Mobile" id = "mobileNo"/></td>
+				</tr>
+				<tr>
+					<td>Email: </td>
+					<td><f:input path="email"  type="email"  placeholder= "Email"/></td>
+				</tr>
+				<tr>
+					<td>Password: </td>
+					<td><f:input path="password" type="password" id="password" placeholder="Password" /></td>
+				</tr>
+				<tr>
+					<td>Confirm Password: </td>
+					<td><input type="password" id= "rePassword" placeholder = "retype Password"/></td>
+				</tr>
+			</table>
+			<div class="submitContainer">
+				<input type="submit" value="Sign Up" class = "submit-btn"/>
+			</div>
+		</f:form>
+	</div>
 	<br>
 	<a href="/login">Already User?</a>
+</main>
 </body>
 </html>
